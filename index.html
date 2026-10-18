@@ -1,1 +1,121 @@
 
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Irgi</title>
+    <style>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1120;
+            color: white;
+        }
+        nav {
+            padding: 24px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #263247;
+        }
+        nav a { color: white; text-decoration: none; }
+        .logo { color: #60a5fa; font-size: 22px; font-weight: bold; }
+        .hero {
+            text-align: center;
+            padding: 110px 20px 90px;
+        }
+        .hero small { color: #60a5fa; letter-spacing: 3px; }
+        h1 { font-size: clamp(36px, 7vw, 64px); margin: 20px 0; }
+        h1 span { color: #60a5fa; }
+        .hero p { color: #cbd5e1; line-height: 1.8; }
+        .button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 13px 24px;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        section { padding: 55px 8%; }
+        section h2 { font-size: 30px; }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .card {
+            background: #131d30;
+            border: 1px solid #29364b;
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .card h3 { color: #93c5fd; }
+        .card p, section p { color: #cbd5e1; line-height: 1.8; }
+        footer {
+            padding: 25px;
+            text-align: center;
+            border-top: 1px solid #29364b;
+            color: #94a3b8;
+        }
+        @media (max-width: 700px) {
+            .projects { grid-template-columns: 1fr; }
+            .hero { padding-top: 75px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">IRGI.DEV</a>
+        <a href="#kontak">Hubungi Saya</a>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <small>WELCOME TO MY PORTFOLIO</small>
+            <h1>Halo, Saya <span>Irgi</span></h1>
+            <p>Web Developer | Website Design | Laravel</p>
+            <p>Saya membangun website modern dan responsif untuk kebutuhan digital.</p>
+            <a href="#proyek" class="button">Lihat Proyek Saya</a>
+        </div>
+
+        <section id="tentang">
+            <h2>Tentang Saya</h2>
+            <p>Saya tertarik pada pengembangan website, teknologi web,
+            desain antarmuka, dan pengelolaan konten digital.</p>
+        </section>
+
+        <section id="proyek">
+            <h2>Proyek Saya</h2>
+            <div class="projects">
+                <div class="card">
+                    <h3>Portal Berita</h3>
+                    <p>Website berita dengan kategori, artikel, dan halaman detail.</p>
+                </div>
+                <div class="card">
+                    <h3>Website Organisasi</h3>
+                    <p>Website profil organisasi untuk menampilkan informasi dan kegiatan.</p>
+                </div>
+                <div class="card">
+                    <h3>Dashboard Admin</h3>
+                    <p>Dashboard untuk pengelolaan artikel dan data website.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak">
+            <h2>Hubungi Saya</h2>
+            <p>Silakan hubungi saya untuk diskusi atau kerja sama proyek website.</p>
+            <a class="button" href="mailto:emailkamu@example.com">Kirim Email</a>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Irgi — My Portfolio
+    </footer>
+</body>
+</html>
