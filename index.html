@@ -1,25 +1,9 @@
-
-<?php
-// INFORMASI DONASI — silakan sesuaikan
-$judul = "Dukungan Homeless Media";
-$subjudul = "Dukungan Homeless Media, Jaga Suara Publik";
-$deskripsi = "Dukungan Anda membantu Homeless Media tetap independen, menyuarakan fakta, dan menghadirkan informasi untuk publik.";
-
-$namaProgram = "Dukungan Homeless Media";
-$namaBank = "Bank BCA";
-$nomorRekening = "1234567890";
-$namaPemilik = "Homeless Media";
-
-// Ganti dengan nama file gambar barcode milik Anda
-$gambarQRIS = "images/qr.jpeg";
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($judul) ?></title>
+    <title>Dukungan Homeless Media</title>
 
     <style>
         * {
@@ -300,78 +284,61 @@ $gambarQRIS = "images/qr.jpeg";
 
 <div class="container">
 
-    <!-- HEADER -->
     <header class="header">
         <span class="label">Dukungan Homeless Media</span>
-        <h1><?= htmlspecialchars($judul) ?></h1>
-        <p><?= htmlspecialchars($subjudul) ?></p>
+        <h1>Dukungan Homeless Media</h1>
+        <p>Dukungan Homeless Media, Jaga Suara Publik</p>
     </header>
 
     <main class="content">
 
-        <!-- PENGANTAR -->
         <section class="intro">
-           
-            <p><?= htmlspecialchars($deskripsi) ?></p>
+            <p>Dukungan Anda membantu Homeless Media tetap independen, menyuarakan fakta, dan menghadirkan informasi untuk publik.</p>
         </section>
 
-        <!-- GAMBAR BARCODE DONASI -->
         <section class="qr-card">
             <h3>Scan QRIS untuk Mendukung Kami</h3>
             <p class="hint">
                 Dukungan Anda membantu Homeless Media tetap independen, menyuarakan fakta, dan menghadirkan informasi untuk publik.
             </p>
 
-            <a href="<?= htmlspecialchars($gambarQRIS) ?>"
-               target="_blank"
-               rel="noopener">
-                <img
-                    src="<?= htmlspecialchars($gambarQRIS) ?>"
-                    alt="Barcode QRIS donasi"
-                    class="qr-image">
+            <a href="images/qr.jpeg" target="_blank" rel="noopener">
+                <img src="images/qr.jpeg" alt="Barcode QRIS donasi" class="qr-image">
             </a>
 
-            <a class="btn btn-green"
-               href="<?= htmlspecialchars($gambarQRIS) ?>"
-               download>
+            <a class="btn btn-green" href="images/qr.jpeg" download>
                 Unduh Barcode QRIS
             </a>
 
-            <!-- INFORMASI REKENING -->
             <div class="account">
                 <h4>Transfer Melalui Rekening</h4>
 
                 <div class="account-row">
                     <span>Program</span>
-                    <strong><?= htmlspecialchars($namaProgram) ?></strong>
+                    <strong>Dukungan Homeless Media</strong>
                 </div>
 
                 <div class="account-row">
                     <span>Bank</span>
-                    <strong><?= htmlspecialchars($namaBank) ?></strong>
+                    <strong>Bank BCA</strong>
                 </div>
 
                 <div class="account-row">
                     <span>No. Rekening</span>
-                    <strong id="rekening">
-                        <?= htmlspecialchars($nomorRekening) ?>
-                    </strong>
+                    <strong id="rekening">1234567890</strong>
                 </div>
 
                 <div class="account-row">
                     <span>Atas Nama</span>
-                    <strong><?= htmlspecialchars($namaPemilik) ?></strong>
+                    <strong>Homeless Media</strong>
                 </div>
 
-                <button class="btn btn-light"
-                        style="margin-top:12px"
-                        onclick="salinRekening()">
+                <button class="btn btn-light" style="margin-top:12px" onclick="salinRekening()">
                     Salin Nomor Rekening
                 </button>
             </div>
         </section>
 
-        <!-- PANDUAN SCAN -->
         <section class="guide">
             <h2>📱 Cara Scan QRIS di HP</h2>
             <p>
@@ -423,10 +390,6 @@ $gambarQRIS = "images/qr.jpeg";
                 </div>
             </div>
 
-
-
-
-
             <div class="note">
                 <strong>Catatan:</strong> Nama menu dapat berbeda di setiap
                 aplikasi. Jika fitur memilih gambar dari galeri tidak tersedia,
@@ -435,23 +398,22 @@ $gambarQRIS = "images/qr.jpeg";
             </div>
         </section>
 
-        <!-- PENUTUP -->
         <section class="closing">
             <h3>Terima Kasih atas Dukungan Partisipasi Anda 🤝</h3>
-
         </section>
 
     </main>
 
     <footer>
-        &copy; <?= date('Y') ?>
-        <?= htmlspecialchars($namaProgram) ?>.
+        &copy; <span id="year"></span> Dukungan Homeless Media.
         Terima kasih telah mendukung media independen.
     </footer>
 
 </div>
 
 <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     function salinRekening() {
         const rekening = document.getElementById('rekening').innerText.trim();
 
