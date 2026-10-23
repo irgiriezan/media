@@ -1,155 +1,492 @@
-<!doctype html>
+
+<?php
+// INFORMASI DONASI — silakan sesuaikan
+$judul = "Open Donasi";
+$subjudul = "Bersama Kita Berbagi, Bersama Kita Peduli";
+$deskripsi = "Salurkan donasi terbaik Anda untuk membantu sesama yang membutuhkan.";
+
+$namaProgram = "Donasi Kebaikan";
+$namaBank = "Bank BCA";
+$nomorRekening = "1234567890";
+$namaPemilik = "Yayasan Peduli Sesama";
+
+// Ganti dengan nama file gambar barcode milik Anda
+$gambarQRIS = "qris-donasi.png";
+?>
+
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dukungan Homeless Media</title>
-  
-  <style>
-    :root{
-      --primary:#0b66d0;
-      --accent:#ffb400;
-      --bg:#f6f8fb;
-      --card:#ffffff;
-      --muted:#6b7280;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:#0b1220;line-height:1.45}
-    .container{max-width:1100px;margin:0 auto;padding:1rem}
-    header{background:var(--card);border-bottom:1px solid #e6e9ef;position:sticky;top:0;z-index:20}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem}
-    .brand{display:flex;align-items:center;gap:0.5rem;font-weight:700}
-    .logo{width:40px;height:40px;background:#e9eef8;border-radius:8px;display:inline-block}
-    nav a{margin-left:1rem;color:var(--primary);text-decoration:none;font-weight:600}
-    .hero{padding:2rem 0}
-    .hero-inner{display:flex;gap:2rem;align-items:center;flex-wrap:wrap}
-    .hero-left{flex:1;min-width:260px}
-    .hero-right{width:360px;max-width:100%;background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 8px 28px rgba(14,20,30,0.06)}
-    h1{margin:0 0 0.5rem 0;font-size:1.6rem}
-    p.lead{margin:0 0 1rem 0;color:var(--muted)}
-    .cta-row{display:flex;gap:0.75rem;flex-wrap:wrap}
-    .btn{padding:0.6rem 1rem;border-radius:10px;border:1px solid transparent;cursor:pointer;font-weight:600}
-    .btn-primary{background:var(--primary);color:#fff}
-    .btn-ghost{background:transparent;border:1px solid #dbe6fb;color:var(--primary)}
-    .progress{height:12px;background:#eef3fb;border-radius:999px;overflow:hidden;margin-top:0.75rem}
-    .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));width:0%}
-    .amounts{display:flex;gap:0.5rem;margin-top:1rem}
-    .amount-card{flex:1;background:#f8fbff;border-radius:10px;padding:0.6rem;text-align:center;border:1px solid #eef4ff}
-    .donation-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
-    .donor-wall{margin-top:1rem}
-    ul.donors{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.5rem}
-    .donor-item{display:flex;align-items:center;gap:0.75rem;background:#fff;border-radius:8px;padding:0.5rem 0.75rem;border:1px solid #f0f3f8}
-    .donor-avatar{width:40px;height:40px;border-radius:8px;object-fit:cover;border:1px solid #eee}
-    /* image (QR) styling */
-    .foto-profil{width:100%;height:auto;border-radius:8px;display:block;object-fit:cover}
-    .qr-section small{display:block;color:var(--muted);margin-bottom:0.5rem}
-    footer{padding:1rem 0;margin-top:2rem;color:var(--muted);font-size:0.95rem}
-    /* modal */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.5);padding:1rem}
-    .modal[aria-hidden="false"]{display:flex}
-    .modal-card{background:#fff;padding:1rem;border-radius:12px;max-width:520px;width:100%;position:relative}
-    .close-btn{position:absolute;right:10px;top:10px;border:none;background:transparent;font-size:1.25rem;cursor:pointer}
-    label{display:block;font-size:0.95rem;margin-top:0.6rem}
-    input[type="text"], input[type="email"], input[type="number"], select{
-      width:100%;padding:0.6rem;border-radius:8px;border:1px solid #e6e9ef;margin-top:0.25rem;
-    }
-    .modal-actions{display:flex;gap:0.5rem;justify-content:flex-end;margin-top:1rem}
-    @media (max-width:800px){
-      .hero-inner{flex-direction:column-reverse}
-      .hero-right{width:100%}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= htmlspecialchars($judul) ?></title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f5;
+            color: #25352d;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 720px;
+            margin: 35px auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #087443, #18a568);
+            color: white;
+            padding: 35px 22px;
+            text-align: center;
+            border-radius: 18px 18px 0 0;
+        }
+
+        .header .label {
+            display: inline-block;
+            padding: 5px 14px;
+            background: rgba(255,255,255,.18);
+            border-radius: 30px;
+            font-size: 12px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: .95;
+        }
+
+        .content {
+            background: white;
+            padding: 28px;
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.06);
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .intro h2 {
+            font-size: 22px;
+            color: #087443;
+            margin-bottom: 8px;
+        }
+
+        .intro p {
+            font-size: 14px;
+            color: #66736b;
+        }
+
+        .qr-card {
+            background: #f8fbf9;
+            border: 1px solid #e0eae3;
+            border-radius: 15px;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .qr-card h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .qr-card .hint {
+            font-size: 13px;
+            color: #748078;
+            margin-bottom: 15px;
+        }
+
+        .qr-image {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            background: white;
+            border: 1px solid #e2e7e3;
+            border-radius: 12px;
+            padding: 10px;
+            display: block;
+            margin: 0 auto 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            padding: 11px 17px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .btn-green {
+            color: white;
+            background: #087443;
+        }
+
+        .btn-green:hover {
+            background: #065b35;
+        }
+
+        .btn-light {
+            color: #087443;
+            background: #e8f5ed;
+        }
+
+        .btn-light:hover {
+            background: #d9eddf;
+        }
+
+        .account {
+            text-align: left;
+            background: white;
+            border: 1px solid #e1e9e3;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .account h4 {
+            margin-bottom: 10px;
+            color: #087443;
+        }
+
+        .account-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 7px 0;
+            font-size: 13px;
+        }
+
+        .account-row span:first-child {
+            color: #748078;
+        }
+
+        .account-row strong {
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+
+        .guide {
+            margin-top: 32px;
+        }
+
+        .guide h2 {
+            font-size: 21px;
+            margin-bottom: 7px;
+            color: #087443;
+        }
+
+        .guide > p {
+            font-size: 14px;
+            color: #6b776f;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .number {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #e3f4e9;
+            color: #087443;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .step p {
+            font-size: 13px;
+            color: #6b776f;
+        }
+
+        .note {
+            margin-top: 22px;
+            background: #fff8e7;
+            border-left: 4px solid #e7ae32;
+            border-radius: 7px;
+            padding: 14px;
+            font-size: 13px;
+            color: #725a21;
+        }
+
+        .closing {
+            margin-top: 28px;
+            text-align: center;
+            padding: 20px 10px;
+            background: #f0f8f2;
+            border-radius: 12px;
+        }
+
+        .closing h3 {
+            color: #087443;
+            margin-bottom: 5px;
+        }
+
+        .closing p {
+            font-size: 13px;
+            color: #68766c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px 10px;
+            font-size: 12px;
+            color: #849087;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 94%;
+                margin: 15px auto;
+            }
+
+            .header {
+                padding: 27px 16px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 18px 14px;
+            }
+
+            .qr-card {
+                padding: 16px 10px;
+            }
+
+            .account-row {
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <header>
-    <div class="container header-inner">
-      <div class="brand">
-        <span class="logo" aria-hidden="true"></span>
-        <span>Dukungan Homeless Media</span>
-      </div>
-      <nav>
 
-        <a href="#donasi" class="btn btn-primary" style="padding:0.45rem 0.75rem;font-size:0.95rem">Homeless Media</a>
-      </nav>
-    </div>
-  </header>
+<div class="container">
 
-  <main class="container">
-    <section class="hero" id="top">
-      <div class="hero-inner">
-        <div class="hero-left">
-          <h1>Dukungan Homeless Media</h1>
-          <p class="lead">Dukungan Anda memungkinkan peliputan mendalam, investigasi, dan pelatihan reporter lokal.</p>
+    <!-- HEADER -->
+    <header class="header">
+        <span class="label">GERAKAN KEBAIKAN</span>
+        <h1><?= htmlspecialchars($judul) ?></h1>
+        <p><?= htmlspecialchars($subjudul) ?></p>
+    </header>
 
- 
+    <main class="content">
 
+        <!-- PENGANTAR -->
+        <section class="intro">
+            <h2>Mari Berbagi Kebaikan ❤️</h2>
+            <p><?= htmlspecialchars($deskripsi) ?></p>
+        </section>
 
+        <!-- GAMBAR BARCODE DONASI -->
+        <section class="qr-card">
+            <h3>Scan QRIS untuk Berdonasi</h3>
+            <p class="hint">
+                Gunakan barcode berikut untuk menyalurkan donasi Anda.
+            </p>
 
-        <aside class="hero-right">
-          <div class="qr-section">
-            <small>Scan / Simpan untuk donasi cepat:</small>
-            <img
-                src="images/qr.jpeg"
-                alt="Foto profil saya"
-                class="foto-profil"
-            >
-            <div style="margin-top:0.75rem;display:flex;gap:0.5rem;">
-              <button id="downloadQr" class="btn btn-ghost" style="flex:1">Unduh QR</button>
-              
+            <a href="<?= htmlspecialchars($gambarQRIS) ?>"
+               target="_blank"
+               rel="noopener">
+                <img
+                    src="<?= htmlspecialchars($gambarQRIS) ?>"
+                    alt="Barcode QRIS donasi"
+                    class="qr-image">
+            </a>
+
+            <a class="btn btn-green"
+               href="<?= htmlspecialchars($gambarQRIS) ?>"
+               download>
+                Unduh Barcode Donasi
+            </a>
+
+            <!-- INFORMASI REKENING -->
+            <div class="account">
+                <h4>Transfer Melalui Rekening</h4>
+
+                <div class="account-row">
+                    <span>Program</span>
+                    <strong><?= htmlspecialchars($namaProgram) ?></strong>
+                </div>
+
+                <div class="account-row">
+                    <span>Bank</span>
+                    <strong><?= htmlspecialchars($namaBank) ?></strong>
+                </div>
+
+                <div class="account-row">
+                    <span>No. Rekening</span>
+                    <strong id="rekening">
+                        <?= htmlspecialchars($nomorRekening) ?>
+                    </strong>
+                </div>
+
+                <div class="account-row">
+                    <span>Atas Nama</span>
+                    <strong><?= htmlspecialchars($namaPemilik) ?></strong>
+                </div>
+
+                <button class="btn btn-light"
+                        style="margin-top:12px"
+                        onclick="salinRekening()">
+                    Salin Nomor Rekening
+                </button>
             </div>
-          </div>
+        </section>
 
+        <!-- PANDUAN SCAN -->
+        <section class="guide">
+            <h2>📱 Cara Scan Barcode di HP</h2>
+            <p>
+                Ikuti langkah-langkah berikut untuk melakukan donasi
+                langsung melalui aplikasi mobile banking.
+            </p>
 
-        </aside>
-      </div>
-    </section>
+            <div class="step">
+                <div class="number">1</div>
+                <div>
+                    <h3>Unduh atau Screenshot Barcode</h3>
+                    <p>
+                        Simpan gambar barcode donasi ke galeri HP Anda
+                        agar mudah ditemukan saat melakukan pembayaran.
+                    </p>
+                </div>
+            </div>
 
+            <div class="step">
+                <div class="number">2</div>
+                <div>
+                    <h3>Buka Aplikasi Mobile Banking</h3>
+                    <p>
+                        Buka aplikasi mobile banking atau dompet digital
+                        yang mendukung pembayaran QRIS.
+                    </p>
+                </div>
+            </div>
 
-  </main>
+            <div class="step">
+                <div class="number">3</div>
+                <div>
+                    <h3>Pilih Menu QRIS atau Scan QR</h3>
+                    <p>
+                        Masuk ke menu pembayaran QRIS atau fitur scan
+                        yang tersedia di aplikasi Anda.
+                    </p>
+                </div>
+            </div>
 
-  <footer class="container" role="contentinfo">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
-      <div>&copy; <span id="year"></span>Homeless Media</div>
-      <div style="color:var(--muted)">Kebijakan Privasi • Laporan Keuangan • Kontak</div>
-    </div>
-  </footer>
+            <div class="step">
+                <div class="number">4</div>
+                <div>
+                    <h3>Pilih Gambar dari Galeri</h3>
+                    <p>
+                        Jika tersedia, tekan ikon galeri atau unggah gambar,
+                        lalu pilih screenshot barcode donasi yang telah disimpan.
+                    </p>
+                </div>
+            </div>
 
-  <!-- Modal Donasi -->
-  <div id="donationModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="donationTitle">
-    <div class="modal-card" role="document">
-      <button class="close-btn" id="closeModal" aria-label="Tutup">&times;</button>
-      <h2 id="donationTitle" style="margin-top:0">Donasi untuk MediaBerita</h2>
-      <form id="donationForm">
-        <label for="donorName">Nama</label>
-        <input id="donorName" name="name" type="text" required placeholder="Nama lengkap atau 'Anonim'">
+            <div class="step">
+                <div class="number">5</div>
+                <div>
+                    <h3>Masukkan Nominal Donasi</h3>
+                    <p>
+                        Periksa nama penerima dan informasi pembayaran,
+                        kemudian masukkan nominal donasi jika diminta.
+                    </p>
+                </div>
+            </div>
 
-        <label for="donorEmail">Email</label>
-        <input id="donorEmail" name="email" type="email" placeholder="email@contoh.com">
+            <div class="step">
+                <div class="number">6</div>
+                <div>
+                    <h3>Periksa dan Konfirmasi Pembayaran</h3>
+                    <p>
+                        Pastikan nama penerima dan nominal sudah benar.
+                        Konfirmasikan pembayaran sesuai petunjuk aplikasi
+                        dan simpan bukti transaksi.
+                    </p>
+                </div>
+            </div>
 
-        <label for="donationAmount">Jumlah (Rp)</label>
-        <input id="donationAmount" name="amount" type="number" min="1000" step="500" value="50000" required>
+            <div class="note">
+                <strong>Catatan:</strong> Nama menu dapat berbeda di setiap
+                aplikasi. Jika fitur memilih gambar dari galeri tidak tersedia,
+                gunakan perangkat lain untuk menampilkan barcode, lalu scan
+                menggunakan HP Anda. Selalu periksa nama penerima sebelum
+                mengonfirmasi pembayaran.
+            </div>
+        </section>
 
-        <label>
-          <input id="donationRecurring" name="recurring" type="checkbox"> Jadikan donasi berulang (bulanan)
-        </label>
+        <!-- PENUTUP -->
+        <section class="closing">
+            <h3>Terima Kasih atas Kebaikan Anda 🤝</h3>
+            <p>
+                Setiap donasi yang Anda berikan sangat berarti
+                bagi mereka yang membutuhkan.
+            </p>
+        </section>
 
-        <label for="method">Metode</label>
-        <select id="method" name="method">
-          <option value="qr">Scan QR / Transfer</option>
-          <option value="card">Kartu Kredit (mock)</option>
-          <option value="paypal">PayPal (mock)</option>
-        </select>
+    </main>
 
-        <div class="modal-actions">
-          <button type="button" id="cancelBtn" class="btn btn-ghost">Batal</button>
-          <button type="submit" class="btn btn-primary">Lanjut & Bayar</button>
-        </div>
-      </form>
-      <div style="font-size:0.9rem;color:var(--muted);margin-top:0.6rem">Anda akan diarahkan ke penyedia pembayaran (contoh) atau diarahkan untuk scan QR.</div>
-    </div>
-  </div>
+    <footer>
+        &copy; <?= date('Y') ?>
+        <?= htmlspecialchars($namaProgram) ?>.
+        Bersama Kita Tebarkan Kebaikan.
+    </footer>
 
+</div>
+
+<script>
+    function salinRekening() {
+        const rekening = document.getElementById('rekening').innerText.trim();
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(rekening)
+                .then(() => alert('Nomor rekening berhasil disalin!'))
+                .catch(() => alert('Silakan salin nomor rekening secara manual.'));
+        } else {
+            alert('Silakan salin nomor rekening secara manual: ' + rekening);
+        }
+    }
+</script>
 
 </body>
 </html>
