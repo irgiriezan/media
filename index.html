@@ -2,7 +2,7 @@
 <?php
 // INFORMASI DONASI — silakan sesuaikan
 $judul = "Dukungan Homeless Media";
-$subjudul = "Dukung Media Independen, Jaga Suara Publik";
+$subjudul = ""Dukungan Homeless Media, Jaga Suara Publik";
 $deskripsi = "Dukungan Anda membantu Homeless Media tetap independen, menyuarakan fakta, dan menghadirkan informasi untuk publik.";
 
 $namaProgram = "Dukungan Homeless Media";
@@ -11,7 +11,7 @@ $nomorRekening = "1234567890";
 $namaPemilik = "Homeless Media";
 
 // Ganti dengan nama file gambar barcode milik Anda
-$gambarQRIS = "qris-donasi.png";
+$gambarQRIS = "qr.jpeg";
 ?>
 
 <!DOCTYPE html>
@@ -302,7 +302,7 @@ $gambarQRIS = "qris-donasi.png";
 
     <!-- HEADER -->
     <header class="header">
-        <span class="label">DUKUNG MEDIA INDEPENDEN</span>
+        <span class="label">"Dukungan Homeless Media</span>
         <h1><?= htmlspecialchars($judul) ?></h1>
         <p><?= htmlspecialchars($subjudul) ?></p>
     </header>
@@ -319,7 +319,7 @@ $gambarQRIS = "qris-donasi.png";
         <section class="qr-card">
             <h3>Scan QRIS untuk Mendukung Kami</h3>
             <p class="hint">
-                Pindai barcode berikut untuk mendukung Homeless Media.
+                Dukungan Anda membantu Homeless Media tetap independen, menyuarakan fakta, dan menghadirkan informasi untuk publik.
             </p>
 
             <a href="<?= htmlspecialchars($gambarQRIS) ?>"
@@ -423,45 +423,22 @@ $gambarQRIS = "qris-donasi.png";
                 </div>
             </div>
 
-            <div class="step">
-                <div class="number">5</div>
-                <div>
-                    <h3>Masukkan Nominal Donasi</h3>
-                    <p>
-                        Periksa nama penerima dan informasi pembayaran,
-                        kemudian masukkan nominal donasi jika diminta.
-                    </p>
-                </div>
-            </div>
 
-            <div class="step">
-                <div class="number">6</div>
-                <div>
-                    <h3>Periksa dan Konfirmasi Pembayaran</h3>
-                    <p>
-                        Pastikan nama penerima dan nominal sudah benar.
-                        Konfirmasikan pembayaran sesuai petunjuk aplikasi
-                        dan simpan bukti transaksi.
-                    </p>
-                </div>
-            </div>
+
+
 
             <div class="note">
                 <strong>Catatan:</strong> Nama menu dapat berbeda di setiap
                 aplikasi. Jika fitur memilih gambar dari galeri tidak tersedia,
                 gunakan perangkat lain untuk menampilkan barcode, lalu scan
-                menggunakan HP Anda. Selalu periksa nama penerima sebelum
-                mengonfirmasi pembayaran.
+                menggunakan HP Anda.
             </div>
         </section>
 
         <!-- PENUTUP -->
         <section class="closing">
-            <h3>Terima Kasih atas Dukungan Anda 🤝</h3>
-            <p>
-                Setiap donasi yang Anda berikan sangat berarti
-                bagi mereka yang membutuhkan.
-            </p>
+            <h3>Terima Kasih atas Dukungan Partisipasi Anda 🤝</h3>
+
         </section>
 
     </main>
